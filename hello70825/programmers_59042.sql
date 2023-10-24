@@ -1,0 +1,14 @@
+/**
+
+동물의 ID와 이름
+[조건] 입양간 기록은 있지만, 보호소에 들어온 기록이 없는 동물
+[정렬] ID 기준 ASC
+
+**/
+
+SELECT AO.ANIMAL_ID, AO.NAME
+FROM ANIMAL_OUTS AS AO 
+    LEFT OUTER JOIN ANIMAL_INS AS AI 
+    ON AO.ANIMAL_ID = AI.ANIMAL_ID
+WHERE AI.DATETIME IS NULL
+ORDER BY AO.ANIMAL_ID ASC
