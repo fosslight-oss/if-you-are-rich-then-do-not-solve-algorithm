@@ -1,0 +1,16 @@
+/**
+
+상품 카테고리 코드별 상품 개수를 출력
+[조건] 코드는 PRODUCT_CODE 앞 2자리이다
+[정렬] 카테고리 코드 기준 오름차순
+
+카테고리 변환 후 문제를 풀어야함
+**/
+
+SELECT CATEGORY, COUNT(CATEGORY)
+FROM (
+    SELECT PRODUCT_ID, SUBSTR(PRODUCT_CODE, 1, 2) AS CATEGORY
+    FROM PRODUCT
+) AS PRODUCT_A
+GROUP BY CATEGORY
+ORDER BY CATEGORY ASC
