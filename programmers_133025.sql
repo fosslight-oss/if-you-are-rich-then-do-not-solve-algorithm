@@ -1,0 +1,13 @@
+/**
+
+아이스크림 맛을 조회하는 SQL문
+[조건] 상반기 아이스크림 총주문량이 3000 초과
+[조건] 주 성분이 과일
+[정렬] 총주문량 기준 DESC
+
+**/
+
+SELECT II.FLAVOR
+FROM FIRST_HALF AS FH JOIN ICECREAM_INFO AS II ON FH.FLAVOR = II.FLAVOR
+WHERE FH.TOTAL_ORDER > 3000 AND II.INGREDIENT_TYPE = 'fruit_based'
+ORDER BY FH.TOTAL_ORDER DESC
