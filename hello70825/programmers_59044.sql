@@ -1,0 +1,13 @@
+/**
+
+가장 오래 보호소에 있었던 동물 3마리의 이름과 보호 시작일을 조회
+[조건] 아직 입양을 가지 못한 동물만 확인한다
+[정렬] 보호 시작일 기준 ASC
+
+**/
+
+SELECT AI.NAME, AI.DATETIME
+FROM ANIMAL_INS AS AI LEFT JOIN ANIMAL_OUTS AS AO ON AI.ANIMAL_ID = AO.ANIMAL_ID
+WHERE AO.ANIMAL_ID IS NULL
+ORDER BY AI.DATETIME ASC
+LIMIT 3
