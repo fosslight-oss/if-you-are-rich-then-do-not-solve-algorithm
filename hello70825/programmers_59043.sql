@@ -1,0 +1,12 @@
+/**
+
+동물의 아이디와 이름을 조회
+[조건] 보호 시작일보다 입양일이 더 빠른 동물
+[정렬] 보호 시작일 기준 ASC
+
+**/
+
+SELECT AI.ANIMAL_ID, AI.NAME
+FROM ANIMAL_INS AS AI JOIN ANIMAL_OUTS AS AO ON AI.ANIMAL_ID = AO.ANIMAL_ID
+WHERE AI.DATETIME > AO.DATETIME
+ORDER BY AI.DATETIME ASC

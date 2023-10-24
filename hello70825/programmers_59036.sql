@@ -1,0 +1,9 @@
+/**
+아픈 동물의 아이디와 이름을 조회하는 SQL문 작성
+단, 아이디 기준 ASC로 조회
+**/
+
+SELECT ANIMAL_ID, NAME
+FROM ANIMAL_INS
+WHERE INTAKE_CONDITION = "Sick"
+ORDER BY ANIMAL_ID ASC

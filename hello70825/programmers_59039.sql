@@ -1,0 +1,11 @@
+/**
+
+이름이 없는 채로 들어온 동물의 ID를 조회하는 SQL문 작성
+[정렬] ID 기준 ASC
+
+**/
+
+SELECT ANIMAL_ID
+FROM ANIMAL_INS
+WHERE NAME IS NULL
+ORDER BY ANIMAL_ID ASC
