@@ -1,0 +1,7 @@
+/**
+모든 동물의 아이디와 이름을 ANIMAL_ID 기준 오름차순
+**/
+
+SELECT ANIMAL_ID, NAME
+FROM ANIMAL_INS
+ORDER BY ANIMAL_ID ASC
