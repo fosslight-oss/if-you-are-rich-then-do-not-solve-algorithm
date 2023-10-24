@@ -1,0 +1,12 @@
+/**
+
+경기도에 위치한 창고의 ID, 이름, 주소, 냉동시설 여부를 조회하는 SQL문 작성
+[조건] 이때 냉동시설 여부가 NULL이면 N으로 출력
+[정렬] WAREHOUSE_ID 기준 ASC
+
+**/
+
+SELECT WAREHOUSE_ID, WAREHOUSE_NAME, ADDRESS, IFNULL(FREEZER_YN, "N")
+FROM FOOD_WAREHOUSE
+WHERE ADDRESS LIKE "경기도%"
+ORDER BY WAREHOUSE_ID ASC
