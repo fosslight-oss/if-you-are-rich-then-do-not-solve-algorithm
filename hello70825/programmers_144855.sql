@@ -1,0 +1,22 @@
+/**
+
+카테고리, 총 판매량을 출력
+[조건] 2022년 1월의 카테고리 별 도서 판매량
+[정렬] 카테고리명 기준 ASC
+
+**/
+
+SELECT CATEGORY, SUM(SALES) AS TOTAL_SALES
+FROM (
+    SELECT 
+        B.BOOK_ID AS BOOK_ID,
+        B.CATEGORY AS CATEGORY,
+        DATE_FORMAT(BS.SALES_DATE, '%Y-%m') AS DATETIME,
+        BS.SALES AS SALES
+    FROM 
+        BOOK AS B JOIN BOOK_SALES AS BS 
+        ON B.BOOK_ID = BS.BOOK_ID
+    ) AS BOOK_A
+WHERE DATETIME = '2022-01'
+GROUP BY CATEGORY
+ORDER BY CATEGORY ASC
