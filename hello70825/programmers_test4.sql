@@ -1,0 +1,11 @@
+/**
+
+지점 별 총급여액이 얼마인지 조회
+[정렬] 지점의 ID 기준 ASC
+
+**/
+
+SELECT BRANCH_ID, SUM(SALARY)
+FROM EMPLOYEES
+GROUP BY BRANCH_ID
+ORDER BY BRANCH_ID ASC
