@@ -47,7 +47,7 @@ public class Programmers10 {
 
   public int solution(int n, int[] lost, int[] reserve) {
     Set<Integer> hasExtra = new HashSet<>();
-    Student[] taken = new Student[lost.length];
+    Person[] taken = new Person[lost.length];
     int answer = 0;
 
     for(int student : reserve) { //여벌을 가진 학생들을 set에 넣는다.
@@ -56,17 +56,17 @@ public class Programmers10 {
 
     Arrays.sort(lost);
     for(int i=0; i<lost.length; i++) { //잃어버린 학생들을 배열에 넣는다.
-      taken[i] = new Student(lost[i], false);
+      taken[i] = new Person(lost[i], false);
     }
 
-    for(Student student : taken) {
+    for(Person student : taken) {
       if(hasExtra.contains(student.number)) {
         hasExtra.remove(student.number);
         student.changeStat(student.isParticipateIn);
       }
     }
 
-    for(Student student : taken) {
+    for(Person student : taken) {
       if(student.isParticipateIn) continue;
       if(bothOrSmaller(hasExtra, student.number)) {
         hasExtra.remove(student.number - 1); // 모든게 다 들어가면 무조건 -1인 번호를 지우도록 방식 통일
@@ -78,7 +78,7 @@ public class Programmers10 {
     }
 
     int notPossibleToParticipate = 0;
-    for(Student student : taken) {
+    for(Person student : taken) {
       if(!student.isParticipateIn) {
         notPossibleToParticipate++;
       }
