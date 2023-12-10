@@ -19,7 +19,7 @@ int main(){
             int tmp = next;
             next = s - next;
             if(next < 0) break;
-            s = tmp;
+            s = tmp; 
             l++;
             v.push_back(next);
         }
