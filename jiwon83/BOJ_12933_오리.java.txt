@@ -1,0 +1,64 @@
+import java.util.*;
+import java.io.*;
+class Main{
+    
+    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    static String str;
+    static String word="quack";
+    static int [] ch, cnt;
+    
+    static void input() throws IOException{
+        str = br.readLine();
+    }
+    //한번에 이어지는 오리의 최대 수 
+    public static void main(String [] args) throws IOException{
+        input();
+        ch = new int[str.length()];
+        cnt = new int[str.length()];
+        int ans = 0;
+
+        for(int s = 0; s <str.length(); s++){
+            if(str.charAt(s) != 'q' || ch[s]==1 ) continue;
+            // System.out.println("turn "+ s);
+            for(int i = s; i<str.length(); i++){
+                // System.out.println("i =  "+ i);
+                if(str.charAt(i) != 'q' || ch[i]==1) continue;
+                int pos = 1;
+                List<Integer> list = new ArrayList<>();
+                list.add(i);
+                int j = i;
+                while(j+1 < str.length() && pos < word.length()){
+                    if(ch[j+1] == 0 && str.charAt(j+1) == word.charAt(pos)){
+                        pos++;
+                        list.add(j+1);
+                    }
+                    j++; 
+                }
+                if(pos == 5){
+                    
+                     //System.out.println(" i = "+i + " j = "+ j);
+                    // System.out.println(" cnt = "+cnt);
+                    for(int idx : list){
+                        ch[idx] = 1;
+                    }
+                    for(int w = i; w <=j; w++){
+                        cnt[w]++;
+                    }
+                    i = j;
+                    // System.out.println(Arrays.toString(ch));
+                }
+            }
+            // System.out.println(Arrays.toString(ch));
+            // System.out.println(Arrays.toString(cnt));
+        }
+    
+        for(int i = 0; i<str.length(); i++){
+            if(ch[i] == 0){
+                System.out.println(-1);
+                return;
+            }
+            ans = Math.max(ans, cnt[i]);
+        }
+        System.out.println(ans);  
+    }
+}
