@@ -1,0 +1,47 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayDeque;
+import java.util.StringTokenizer;
+
+//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+public class Main {
+    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    static StringTokenizer st;
+    static StringBuilder sb = new StringBuilder();
+    static int N;
+    static int [] a, ans;
+
+    static void input() throws IOException {
+        N = Integer.parseInt(br.readLine());
+        a = new int[N];
+        ans = new int[N];
+        st = new StringTokenizer(br.readLine());
+        for(int i = 0; i<N; i++){
+            a[i] = Integer.parseInt(st.nextToken());
+        }
+    }
+    static void sol(){
+        ArrayDeque<Integer> stack = new ArrayDeque<>();
+        for (int i = N-1; i>=0; i--){
+            while (!stack.isEmpty() && stack.peekLast() <= a[i]){
+                stack.pollLast();
+            }
+            if (stack.isEmpty()){
+                ans[i] = -1;
+            }else{
+                ans[i] = stack.peekLast();
+            }
+            stack.addLast(a[i]);
+        }
+        for (int i : ans){
+            sb.append(i+ " ");
+        }
+        System.out.println(sb);
+    }
+    public static void main(String[] args) throws IOException{
+        input();
+        sol();
+    }
+}
