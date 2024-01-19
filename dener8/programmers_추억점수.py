@@ -11,3 +11,4 @@ def solution(name, yearning, photos):
         answer.append(score)
 
     return answer
+
