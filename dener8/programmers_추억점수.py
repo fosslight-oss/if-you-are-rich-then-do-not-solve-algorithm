@@ -10,4 +10,5 @@ def solution(name, yearning, photos):
                 score += dictionary[person]
         answer.append(score)
 
-    return answer₩
+    return answer
+
